@@ -15,3 +15,5 @@ You can run the test in this way
 - access endpoint http://localhost:8080/swap
 - update SwapMe.java, build and replace test.jar
 - access endpoint http://localhost:8080/swap again
+
+root cause is discussed at https://github.com/spring-projects/spring-boot/issues/18300
