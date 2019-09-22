@@ -33,8 +33,9 @@ public class MyClassLoader extends URLClassLoader {
 
     private static ClassLoader findParentClassLoader() {
         ClassLoader parent = Thread.currentThread().getContextClassLoader();
-        if (parent == null) {
-            parent = MyClassLoader.class.getClassLoader();
+        System.out.println("context loader:" + parent);
+        if (parent != null) {
+            parent = parent.getParent(); // use appClassLoader rather than LaunchedClassLoader
         }
         if (parent == null) {
             parent = ClassLoader.getSystemClassLoader();

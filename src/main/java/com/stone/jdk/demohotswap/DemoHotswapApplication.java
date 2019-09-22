@@ -17,6 +17,7 @@ import java.util.Date;
 @SpringBootApplication
 @RestController
 public class DemoHotswapApplication extends SpringBootServletInitializer {
+//public class DemoHotswapApplication {
     private static final String PROTOCOL_HANDLER = "java.protocol.handler.pkgs";
 
     public static void main(String[] args) {
@@ -39,7 +40,10 @@ public class DemoHotswapApplication extends SpringBootServletInitializer {
 
         String jarFile = String.format("jar:file:%s/%s!/", "/tmp", "test.jar");
         try {
+            // reproduce BUG un-comment below line
             URL jarUrl = new URL(jarFile);
+            // FIX bug un-comment below line
+            // URL jarUrl = new URL(null, jarFile, new sun.net.www.protocol.jar.Handler());
             cl.addURL(jarUrl);
         } catch (Exception e) {
             e.printStackTrace();
